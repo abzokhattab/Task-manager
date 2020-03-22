@@ -1,9 +1,12 @@
 <template>
   <b-container >
+            <h2 class="ui dividing header">Edit Profile</h2>
+        <div class="col-xs-12" style="height:50px;"></div>
     <b-form @submit="onSubmit" @reset="onReset">
        <b-form>     
       <b-form-group 
         id="input-group-1"
+              class="text-sm-left"
         label="Email address:"
         label-for="input-1" 
         description="We'll never share your email with anyone else."
@@ -17,7 +20,8 @@
         ></b-form-input>
       </b-form-group>
        </b-form>
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2" inline>
+      <b-form-group id="input-group-2"               class="text-sm-left"
+ label="Your Name:" label-for="input-2" inline>
         <b-form-input
           id="input-2"
           v-model="form.name"
@@ -28,7 +32,8 @@
 
 
 
-      <b-form-group id="input-group-3"  label-for="input-3">
+      <b-form-group id="input-group-3"               class="text-sm-left"
+ label-for="input-3">
        <div>
   <b-form @submit.stop.prevent>
     <label for="text-password">Password</label>

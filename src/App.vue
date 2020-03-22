@@ -2,20 +2,21 @@
   <div id="app">
         <Header/>
     <!-- <HelloWorld/> -->
-
-    <login/>
+<edit/>
+    <!-- <login/> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header'
-import login from './components/login'
+// import login from './components/login'
+import edit from './components/edit-profile.vue'
 
 export default {
   name: 'App',
   components: {
-    Header,login
+    Header,edit
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <b-container >
-    <col-xs>
     <b-form @submit="onSubmit" @reset="onReset" >
-    
+               <h2 class="ui dividing header">Edit Profile</h2>
+        <div class="col-xs-12" style="height:50px;"></div>
       <b-form-group id="input-group-2" label="Username:" label-for="input-2" inline>
         <b-form-input
           id="input-2"
@@ -32,7 +32,6 @@
       <b-button type="submit" variant="primary">Login</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
-    </col-xs>
   </b-container>
   
 </template>
@@ -53,7 +52,9 @@ import axios from 'axios'
       onSubmit(evt) {
         evt.preventDefault()
         axios.post( 'https://abzo-user-task-api.herokuapp.com/users/login',this.form).
-        then(()=>{
+        then((resp)=>{
+                  const token = resp.data.tokens[0].token
+      localStorage.setItem('user-token', token)
   console.log('suc')
 }).catch((error)=>{
 console.log('fail'+error)
