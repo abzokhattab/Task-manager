@@ -1,39 +1,24 @@
 <template>
   <b-container >
-    <b-form @submit="onSubmit" @reset="onReset">
-       <b-form>     
-      <b-form-group 
-        id="input-group-1"
-        label="Email address:"
-        label-for="input-1" 
-        description="We'll never share your email with anyone else."
-      >
-        <b-form-input 
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          required
-          placeholder="Enter email"
-        ></b-form-input>
-      </b-form-group>
-       </b-form>
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2" inline>
+    <col-xs>
+    <b-form @submit="onSubmit" @reset="onReset" >
+    
+      <b-form-group id="input-group-2" label="Username:" label-for="input-2" inline>
         <b-form-input
           id="input-2"
           v-model="form.name"
           required
-          placeholder="Enter name"
+          placeholder="Enter Username"
         ></b-form-input>
       </b-form-group>
-
-
+         
 
       <b-form-group id="input-group-3"  label-for="input-3">
        <div>
   <b-form @submit.stop.prevent>
-    <label for="text-password">Password</label>
+    <label for="text-password">Password:</label>
     <b-input type="password" id="text-password" aria-describedby="password-help-block"        
-     placeholder="Enter Password" v-model="form.password"
+     placeholder="Enter Password" v-model="form.Password"
 ></b-input>
     <b-form-text id="password-help-block">
       Your password must be 8-20 characters long, contain letters and numbers, and must not
@@ -44,33 +29,30 @@
       </b-form-group>
 
 
-      <b-button type="submit" variant="primary">Register</b-button>
+      <b-button type="submit" variant="primary">Login</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+    </col-xs>
   </b-container>
   
 </template>
 
 <script>
-    import axios from 'axios';
-
+import axios from 'axios'
   export default {
+ 
     
     data() {
       return {
         form: {
-          email: '',
-          name: '',
-          password: '',
-        },
-
-      }
+            name:'',
+            Password:''
+        }      }
     },
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-
-        axios.post( 'https://abzo-user-task-api.herokuapp.com/users',this.form).
+        axios.post( 'https://abzo-user-task-api.herokuapp.com/users/login',this.form).
         then(()=>{
   console.log('suc')
 }).catch((error)=>{
@@ -80,10 +62,10 @@ console.log('fail'+error)
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
-        this.form.email = ''
         this.form.name = ''
-        this.form.password = 0
-     
+        this.form.Password = ''
+        // Trick to reset/clear native browser form validation state
+
       }
     }
   }
