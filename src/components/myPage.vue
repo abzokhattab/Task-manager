@@ -78,6 +78,9 @@ export default {
       }).then(res => {
         this.name = res.data.name;
         console.log(res.data.name);
+      }).catch(()=>{
+              this.$router.push("/login");
+
       });
     }
   },

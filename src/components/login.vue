@@ -32,6 +32,8 @@
 
       <b-button type="submit" variant="primary">Login</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
+            <b-button type="submit" variant="secondary" @click="register">Register</b-button>
+
     </b-form>
   </b-container>
   
@@ -54,6 +56,12 @@ import axios from 'axios'
       this.$router.push("/profile");
     }},
     methods: {
+      register(){
+              this.$router.push("/signup");
+
+      }
+
+      ,
       onSubmit(evt) {
         evt.preventDefault()
         axios.post( 'https://abzo-user-task-api.herokuapp.com/users/login',this.form).

@@ -9,10 +9,19 @@ import VueRouter from 'vue-router'
 import mypage from './components/myPage'
 import task from './components/tasks'
 import edit from './components/edit-profile.vue'
-
+import signout from './components/signout.vue'
+import deleted from './components/deleted.vue'
 Vue.config.productionTip = false
 
 const routes = [
+  {
+    path:'/delete',
+    component:deleted
+  },
+  {
+    path:'/signout',
+    component:signout
+  },
   {
     path:'/login',
     component:login

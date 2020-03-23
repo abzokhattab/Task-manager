@@ -70,6 +70,8 @@
           </b-container>
 
           <b-button type="submit" variant="primary">Update</b-button>
+                <b-button type="submit" variant="danger" @click="deletee">Delete account</b-button>
+
         </form>
       </div>
     </div>
@@ -110,7 +112,7 @@ export default {
   methods:{
     updateProfile(){
           const token = localStorage.getItem("user-token");
-    if(file!=null){
+    if(this.file!=null){
 
 axios.patch("https://abzo-user-task-api.herokuapp.com/users/me/avatar" ,{
         
@@ -130,57 +132,28 @@ axios.patch("https://abzo-user-task-api.herokuapp.com/users/me/avatar" ,{
           Authorization: `Bearer ${token}`
         }
       }).then (()=>{
-        console.log("dwqdwqdqwdqwdqwdqwdqwdqwdqw")
       })
+
+
+    },
+
+    deletee(){
+    const token = localStorage.getItem("user-token");
+axios.delete("https://abzo-user-task-api.herokuapp.com/users/me" ,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then (()=>{
+                                localStorage.clear();
+
+                                this.$router.push("/delete");
+
+      })
+
 
 
     }
   }
-  // beforeRouteEnter (to, from, next) {
-  //     const token = localStorage.getItem('user-token')
-
-  //     return token ? next() : next('/login')
-  // },
-  // created () {
-  //     this.fetchAuthenticatedUser()
-  // },
-  // methods: {
-  //     fetchAuthenticatedUser () {
-  //         const token = localStorage.getItem('user-token')
-
-  //         axios
-  //             .get('account/me', {
-  //                 headers: {
-  //                     Authorization: `Bearer ${token}`
-  //                 }
-  //             })
-  //             .then(response => {
-  //                 this.name = response.user.name
-  //                 this.email = response.user.email
-  //                 this.age = response.user.age
-  //                 this.password = response.user.password
-  //             })
-  //     },
-  //     updateProfile () {
-  //         const token = localStorage.getItem('user-token')
-
-  //         axios
-  //             .put(
-  //                 '/account/update_profile',
-  //                 {
-  //                     name: this.name,
-  //                     username: this.username,
-  //                     email: this.email,
-  //                     age: this.age,
-  //                 },
-  //                 {
-  //                     headers: {
-  //                         Authorization: `Bearer ${token}`
-  //                     }
-  //                 }
-  //             )
-
-  //     }
-  // }
+  
 };
 </script>
