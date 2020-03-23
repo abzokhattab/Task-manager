@@ -3,13 +3,13 @@
     <b-form @submit="onSubmit" @reset="onReset" >
                <h2 class="ui dividing header"> Login </h2>
         <div class="col-xs-12" style="height:50px;"></div>
-      <b-form-group id="input-group-2" label="Username:" label-for="input-2" inline
+      <b-form-group id="input-group-2" label="Email:" label-for="input-2" inline
       class="text-sm-left">
         <b-form-input
           id="input-2"
-          v-model="form.name"
+          v-model="form.email"
           required
-          placeholder="Enter Username"
+          placeholder="Enter Email"
         ></b-form-input>
       </b-form-group>
          
@@ -19,7 +19,7 @@
   <b-form @submit.stop.prevent>
     <label for="text-password">Password:</label>
     <b-input type="password" id="text-password" aria-describedby="password-help-block"        
-     placeholder="Enter Password" v-model="form.Password"
+     placeholder="Enter Password" v-model="form.password"
 ></b-input>
     <b-form-text id="password-help-block" class="text-sm-left">
       Your password must be 8-20 characters long, contain letters and numbers, and must not
@@ -45,27 +45,33 @@ import axios from 'axios'
     data() {
       return {
         form: {
-            name:'',
-            Password:''
+            email:'',
+          password:''
         }      }
-    },
+    },beforeCreate() {
+    const token = localStorage.getItem("user-token");
+    if (token != null) {
+      this.$router.push("/profile");
+    }},
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
         axios.post( 'https://abzo-user-task-api.herokuapp.com/users/login',this.form).
-        then((resp)=>{
-                  const token = resp.token
+        then((res)=>{
+                  const token = res.data.token
       localStorage.setItem('user-token', token)
-  console.log('suc'+ token)
+      this.$router.push("/profile");
 }).catch((error)=>{
 console.log('fail'+error)
 })
+
+
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
-        this.form.name = ''
-        this.form.Password = ''
+        this.form.email = ''
+        this.form.password = ''
         // Trick to reset/clear native browser form validation state
 
       }
