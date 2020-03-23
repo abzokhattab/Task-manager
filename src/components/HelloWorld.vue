@@ -1,6 +1,6 @@
 <template>
   <b-container >
-            <h2 class="ui dividing header">Edit Profile</h2>
+            <h2 class="ui dividing header">Register</h2>
         <div class="col-xs-12" style="height:50px;"></div>
     <b-form @submit="onSubmit" @reset="onReset">
        <b-form>     

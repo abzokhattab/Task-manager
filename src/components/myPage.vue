@@ -12,15 +12,13 @@
 				<div class="profile-userpic">
 					<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
 				</div>
-				<!-- END SIDEBAR USERPIC -->
+				<!-- END SIDEBAR USERPIaC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
 						Marcus Doe
 					</div>
-					<div class="profile-usertitle-job">
-						Developer
-					</div>
+	
 				</div>
 
 				<div class="profile-usermenu">
