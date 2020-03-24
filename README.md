@@ -1,7 +1,5 @@
 # Task-manager
-
-# Task-manager-Api-Service
-mongodb , RestApi , nodejs 
+Vuejs,Bootstrap ,Restapi ,Axios,mongoDB , jest , Sendgrid , JWT , NodeJS and JavaScript 
 
 # Project Title
 Task-manager-Api-Service
