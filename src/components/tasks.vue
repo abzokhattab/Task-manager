@@ -9,7 +9,7 @@
             <b-form-input
               size="sm"
                         v-model="name"
-              placeholder="Enter Task name"
+              placeholder="Enter Unique Task name"
             ></b-form-input>
             <b-button size="sm" type="submit" variant="primary"
               >Add Task</b-button
@@ -22,10 +22,10 @@
               size="large"
   v-for="option in options"
         v-model="selected"
-        :key="option.value"
+        :key="option.text"
         :value="option"
               stacked
-            >        {{ option.text }}
+            >        {{ option.text + option.des}}
 
             </b-form-checkbox>
           </b-form-group>
@@ -38,17 +38,14 @@
         <b-button type="submit" variant="danger" @click="deletee" >Delete</b-button>
 
         <br />
+                    <p class="invalid-feedback d-block" >{{error}}</p>
+        <br />
 
-        <strong
-          >Powered by
-          <a href="https://github.com/Abzokhattab/Task-manager" target="_blank"
-            >Abdelrahman Khattab</a
-          ></strong
-        >
       </center>
       <br />
       <br />
     </b-col>
+          
   </b-container>
 </template>
 
@@ -57,7 +54,7 @@ import Axios from "axios";
 
 export default {
   data() {
-    return {dataa :[],
+    return {error:'',
               selected: [], // Must be an array reference!
 
       name: "",
@@ -77,9 +74,11 @@ export default {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).then(res => {
+      }).catch(() => {
+                                localStorage.clear();
+              this.$router.push("/login");
+
        // this.name = res.data._id;
-        console.log(res.data._id);
       });
 
       Axios.get("https://abzo-user-task-api.herokuapp.com/tasks", {
@@ -89,15 +88,19 @@ export default {
       }).then(res => {
         res.data.forEach(element => {
          this.options.push({
-            text : element.description,
+            text : element.description ,
             value: element.completed,
-            _id:element._id
+            _id:element._id,
+            des:(element.completed?'  ,Completed':'  ,Uncompleted')
           })
           
         });
         // this.name = res.data.name;
-        this.dataa=res.data
-        console.log(res.data);
+      }).catch(() => {
+                                localStorage.clear();
+              this.$router.push("/login");
+
+       // this.name = res.data._id;
       });
     }
   },
@@ -110,7 +113,7 @@ export default {
         }
       })
         .then(res => {
-          this.options.push({text:this.name,value:false,_id:res.data._id})
+          this.options.push({text:this.name,value:false,_id:res.data._id,des:'  ,UnCompleted'})
           console.log(this.selected);
 
         })
@@ -127,12 +130,17 @@ export default {
           Authorization: `Bearer ${token}`
         }
       })
-        .then(res => {
-          console.log(res.data);
-        })
-        .catch(error => {
-          console.log("fail" + error);
-        });
+        .then(() => {
+        var indx=  this.options.findIndex(el=>
+             el._id == element._id
+
+          )
+          this.options[indx].completed=true,
+          this.options[indx].des='  ,Completed'
+         })
+        .catch(() => {
+                  this.error='Invalid Inputs'
+});
 
 
             });
@@ -146,11 +154,16 @@ export default {
           Authorization: `Bearer ${token}`
         }
       })
-        .then(res => {
-          console.log(res.data);
+        .then(() => {
+        var indx=  this.options.findIndex(el=>
+             el._id == element._id
+
+          )
+          this.options[indx].completed=true,
+          this.options[indx].des='  ,Uncompleted'
         })
-        .catch(error => {
-          console.log("fail" + error);
+        .catch(() => {
+        this.error='Invalid Inputs'
         });
 
 
@@ -170,8 +183,8 @@ export default {
           this.options=this.options.filter(el=>el._id!=element._id)
         
         })
-        .catch(error => {
-          console.log("fail" + error);
+        .catch(() => {
+        this.error='Invalid Inputs'
         });
             });
     }

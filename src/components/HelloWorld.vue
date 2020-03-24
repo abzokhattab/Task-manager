@@ -42,6 +42,7 @@
             <b-input
               type="password"
               id="text-password"
+              required=""
               aria-describedby="password-help-block"
               placeholder="Enter Password"
               v-model="form.password"
@@ -58,6 +59,9 @@
       <b-button type="submit" variant="primary">Register</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+       <div class="text-left">
+            <p class="invalid-feedback d-block" >{{error}}</p>
+    </div>
   </b-container>
 </template>
 
@@ -66,7 +70,9 @@ import axios from "axios";
 
 export default {
   data() {
+  
     return {
+      error:"",
       form: {
         email: "",
         name: "",
@@ -82,11 +88,11 @@ export default {
         .post("https://abzo-user-task-api.herokuapp.com/users", this.form)
         .then(() => {
           console.log("suc");
-                        this.$router.push("/myPage");
+                        this.$router.push("/login");
         })
-        .catch(error => {
-          console.log("fail" + error);
-        });
+       .catch(()=>{
+        this.error='Invalid Inputs'
+      });
 
     },
     onReset(evt) {

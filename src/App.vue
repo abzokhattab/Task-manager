@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
         <Header/>
+            <router-view></router-view>
+<foooter/>
     <!-- <HelloWorld/> -->
 <!-- <edit/> -->
     <!-- <login/> -->
     <!-- <mypage/> -->
-<tasks/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-
+import foooter from './components/footer'
 // import mypage from './components/myPage'
 // import HelloWorld from './components/HelloWorld.vue'
 // import login from './components/login'
@@ -21,7 +21,7 @@ import Header from './components/Header'
 export default {
   name: 'App',
   components: {
-    Header
+    Header,foooter
   }
 }
 </script>

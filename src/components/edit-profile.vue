@@ -73,6 +73,7 @@
                 <b-button type="submit" variant="danger" @click="deletee">Delete account</b-button>
 
         </form>
+        <p class="text-left">{{error}}</p>
       </div>
     </div>
   </div>
@@ -84,6 +85,7 @@ export default {
   components: {},
   data() {
     return {
+      error:"",
       name: "",
       email: "",
       password: "",
@@ -106,6 +108,8 @@ export default {
         this.age = res.data.age;
         this.name = res.data.name;
 
+      }).catch(()=>{
+        this.error='Invalid Inputs'
       });
     }
   },
@@ -114,15 +118,16 @@ export default {
           const token = localStorage.getItem("user-token");
     if(this.file!=null){
 
-axios.patch("https://abzo-user-task-api.herokuapp.com/users/me/avatar" ,{
-        
+axios.post("https://abzo-user-task-api.herokuapp.com/users/me/avatar" ,{
+      file:this.file
   },{
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then (()=>{
-        console.log("dwqdwqdqwdqwdqwdqwdqwdqwdqw")
-      })
+      }).catch(()=>{
+        this.error='Invalid Inputs'
+      });
 
     }
     axios.patch("https://abzo-user-task-api.herokuapp.com/users/me" ,{
@@ -132,7 +137,10 @@ axios.patch("https://abzo-user-task-api.herokuapp.com/users/me/avatar" ,{
           Authorization: `Bearer ${token}`
         }
       }).then (()=>{
-      })
+        this.error='Updates were submitted successfully'
+      }).catch(()=>{
+        this.error='Invalid Inputs'
+      });
 
 
     },
@@ -148,7 +156,9 @@ axios.delete("https://abzo-user-task-api.herokuapp.com/users/me" ,{
 
                                 this.$router.push("/delete");
 
-      })
+      }).catch(()=>{
+        this.error='Invalid Inputs'
+      });
 
 
 

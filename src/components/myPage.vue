@@ -1,5 +1,7 @@
 <template>
   <div>
+        <br />
+
     <!-- <ul id="example-1">
       <li v-for="task in tasks" :key="task.name">
         {{ task.name }}
@@ -16,44 +18,43 @@
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
+              <strong>
               {{ name }}
+              </strong>
             </div>
           </div>
+              <br />
+
 
           <div class="profile-usermenu">
-            <ul class="nav">
-              <div>
-                <li class="active">
+              <div><center>
                   <a href="#" @click="navigate">
                     <i class="glyphicon glyphicon-home"></i>
                     My Task
                   </a>
-                </li>
+                                    </center>
               </div>
               <div>
-                <li>
+                
                   <a href="#" @click="navigate2">
                     <i class="glyphicon glyphicon-user"></i>
                     Account Settings
                   </a>
-                </li>
               </div>
-            </ul>
           </div>
           <!-- END MENU -->
         </div>
       </div>
     </b-row>
-    <center>
-      <strong
-        >Powered by
-        <a href="https://github.com/Abzokhattab/Task-manager" target="_blank"
-          >Abdelrahman Khattab</a
-        ></strong
-      >
-    </center>
+   
+    <br />
+    <br />    <br />
+    <br />
+        <br />
+
     <br />
     <br />
+
   </div>
 </template>
 
@@ -62,7 +63,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      name: "eqweqw"
+      name: ""
     };
   },
   beforeCreate() {
