@@ -15,10 +15,7 @@ export default {
   components: {
     Header,foooter
   }
-  ,mounted () {
-	let root =  '/'
-	this.$router.push({ path: root, query: { name: 'login' } });
-}
+
 }
 </script>
 
