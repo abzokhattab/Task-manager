@@ -5,7 +5,7 @@
         <h2 class="ui dividing header">My Tasks</h2>
         <div class="col-xs-12" style="height:50px;"></div>
         <b-row align-h="center">
-          <b-form inline align="center" @submit="onSubmit">
+          <b-form inline align="center" @submit.prevent="onSubmit">
             <b-form-input
               size="sm"
                         v-model="name"
@@ -114,12 +114,10 @@ export default {
       })
         .then(res => {
           this.options.push({text:this.name,value:false,_id:res.data._id,des:'  ,UnCompleted'})
-          console.log(this.selected);
 
         })
-        .catch(error => {
-          console.log("fail" + error);
-        });
+        .catch((e) => {
+console.log(e)        });
     },
     oncompleted(){
             const token = localStorage.getItem("user-token");
@@ -135,7 +133,7 @@ export default {
              el._id == element._id
 
           )
-          this.options[indx].completed=true,
+          this.options[indx].value=true,
           this.options[indx].des='  ,Completed'
          })
         .catch(() => {
@@ -159,7 +157,7 @@ export default {
              el._id == element._id
 
           )
-          this.options[indx].completed=true,
+          this.options[indx].value=true,
           this.options[indx].des='  ,Uncompleted'
         })
         .catch(() => {
