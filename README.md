@@ -1,3 +1,4 @@
+Warning : there might be some delay because the request is made to a server in USA as i uploaded the backend api into heroku 
 # Task-manager
 Vuejs,Bootstrap ,Restapi ,Axios,mongoDB , jest , Sendgrid , JWT , NodeJS and JavaScript 
 
