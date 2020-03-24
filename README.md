@@ -8,7 +8,7 @@ Task-manager-Api-Service
 
 # Deployment
 This api was deployed on Heroku in
-this link : https://khattab-task.herokuapp.com/login
+this link : https://khattab-task.herokuapp.com/
 
 # intro 
 this repo is the Frontend for the Task-manager-Api-Service repo (https://github.com/Abzokhattab/Task-manager-Api-Service) .
