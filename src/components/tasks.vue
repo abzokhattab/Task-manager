@@ -116,8 +116,10 @@ export default {
           this.options.push({text:this.name,value:false,_id:res.data._id,des:'  ,UnCompleted'})
 
         })
-        .catch((e) => {
-console.log(e)        });
+        .catch(() => {
+                this.$router.push("/tasks");
+
+   });
     },
     oncompleted(){
             const token = localStorage.getItem("user-token");
