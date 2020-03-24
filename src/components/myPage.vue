@@ -80,6 +80,8 @@ export default {
         this.name = res.data.name;
         console.log(res.data.name);
       }).catch(()=>{
+                                localStorage.clear();
+
               this.$router.push("/login");
 
       });
