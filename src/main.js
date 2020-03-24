@@ -14,7 +14,9 @@ import deleted from './components/deleted.vue'
 Vue.config.productionTip = false
 
 const routes = [
-  {
+  
+    { path: '/', redirect: '/login' }
+,{
     path:'/delete',
     component:deleted
   },
@@ -43,7 +45,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 });
 
 

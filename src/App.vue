@@ -3,26 +3,22 @@
         <Header/>
             <router-view></router-view>
 <foooter/>
-    <!-- <HelloWorld/> -->
-<!-- <edit/> -->
-    <!-- <login/> -->
-    <!-- <mypage/> -->
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
 import foooter from './components/footer'
-// import mypage from './components/myPage'
-// import HelloWorld from './components/HelloWorld.vue'
-// import login from './components/login'
-//import edit from './components/edit-profile.vue'
 
 export default {
   name: 'App',
   components: {
     Header,foooter
   }
+  ,mounted () {
+	let root =  '/'
+	this.$router.push({ path: root, query: { name: 'login' } });
+}
 }
 </script>
 

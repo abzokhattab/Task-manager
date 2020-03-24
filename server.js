@@ -5,10 +5,10 @@ const path = require('path')
 const app = express()
 
 //here we are configuring dist to serve app files
-app.use('/', serveStatic(path.join(__dirname, './public')))
+app.use('', serveStatic(path.join(__dirname, '/dist')))
 
 // this * route is to serve project on different page routes except root `/`
 
-
 const port = process.env.PORT || 8080
 app.listen(port)
+console.log(`app is listening on port: ${port}`)
