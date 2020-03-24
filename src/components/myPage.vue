@@ -71,17 +71,14 @@ export default {
     if (token == null) {
       this.$router.push("/login");
     } else {
-      console.log(token);
       Axios.get("https://abzo-user-task-api.herokuapp.com/users/me", {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then(res => {
         this.name = res.data.name;
-        console.log(res.data.name);
       }).catch(()=>{
-                                localStorage.clear();
-
+             localStorage.clear();
               this.$router.push("/login");
 
       });
