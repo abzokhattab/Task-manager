@@ -87,7 +87,6 @@ export default {
       axios
         .post("https://abzo-user-task-api.herokuapp.com/users", this.form)
         .then(() => {
-          console.log("suc");
                         this.$router.push("/login");
         })
        .catch(()=>{
