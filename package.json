@@ -12,7 +12,7 @@
     "axios": "^0.19.2",
     "bootstrap-vue": "^2.7.0",
     "core-js": "^3.6.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mapbox-gl": "^1.8.1",
     "mdbvue": "^6.5.1",
     "vue": "^2.6.11",
